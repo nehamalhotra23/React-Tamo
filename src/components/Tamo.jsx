@@ -32,6 +32,23 @@ class Tamo extends React.Component{
       this.setState({play: temp})
 
   }
+  componentDidMount(){
+      this.decriment= setInterval(() => this.setDecriments(),5000);
+  }
+  setDecriments(){
+      console.log("taco");
+    var tempTired = this.state.tired;
+    tempTired-=1;
+    var tempHunger = this.state.hunger;
+    tempHunger-=1;
+    var tempPlay = this.state.play;
+    tempPlay-=1;
+    this.setState({hunger: tempHunger, tired: tempTired, play: tempPlay})
+  }
+
+//   componentWillUnMount(){
+//       clearInterval(this.state.)
+//   }
   render(){
     return(
       <div>
