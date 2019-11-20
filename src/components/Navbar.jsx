@@ -53,6 +53,7 @@ function Navbar() {
           <div style={navDiv}>
             <Link to="/" style={logo}>TAMO </Link>
             <Link to="/NewTamoform" style={modelX}>CREATE PLAYER</Link>
+            <Link to="/TamoControl" style={modelX}>Day Care</Link>
           </div>
         </nav>
       </div>
