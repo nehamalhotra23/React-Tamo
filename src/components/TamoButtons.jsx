@@ -1,11 +1,12 @@
 import React from 'react';
 
-function TamoButtons(){
+
+function TamoButtons(props){
   
   return(
     <div>
       <button>Feed Me!</button>
-      <button>Sleep</button>
+      <button onClick={props.onTiredButtonClick}>Sleep</button>
       <button>Play With Me!</button>
     </div>
   );

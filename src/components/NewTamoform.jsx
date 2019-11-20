@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { v4 } from "uuid";
+import { v4 } from 'uuid';
   
 function NewTamoform(props) {
   let _name = null;
-  let _hunger = null;
-  let _sleep = null;
-  let _play = null;
+  // let _hunger = null;
+  // let _sleep = null;
+  // let _play = null;
 
   function handleSubmission(event) {
     event.preventDefault();
@@ -25,22 +25,6 @@ function NewTamoform(props) {
           id='name'
           placeholder='name'
           ref={(input) => {_name = input;}}/>
-        {/* <input
-            type='text'
-            id='hunger'
-            placeholder='hunger'
-            ref={(input) => {_hunger = input;}}/>
-          <input
-            type='text'
-            id='sleep'
-            placeholder='sleep'
-            ref={(input) => {_sleep = input;}}/>
-          <input
-            type='text'
-            id='sleep'
-            placeholder='hunger'
-            ref={(input) => {_hunger = input;}}/> */}
-        
         <button type='submit'>create player</button>
       </form>
     </div>

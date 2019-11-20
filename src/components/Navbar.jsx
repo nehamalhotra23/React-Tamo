@@ -19,17 +19,6 @@ function Navbar() {
     textDecoration: 'none',
     color: '#fff'
   };
-  var navbarRight = {
-    float: 'right',
-    textDecoration: 'none',
-    padding: '10px',
-    color: '#fff',
-    fontFamily: 'Arial',
-    fontWeight: '900',
-    '&:hover': {
-      textDecoration: 'underline'
-    }
-  };
 
   var modelX = {
     textDecoration: 'none',

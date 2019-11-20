@@ -8,7 +8,7 @@ function TamoControl(props){
     <div>
       {props.tamolist.map((tamo) =>
         <Tamo
-         name= {tamo.name}
+          name= {tamo.name}
           key={tamo.id}/> 
       )}
     </div>
@@ -16,8 +16,8 @@ function TamoControl(props){
 }
 
 TamoControl.propTypes={
-    tamolist: PropTypes.array
-}
+  tamolist: PropTypes.array
+};
 
 
 export default TamoControl;

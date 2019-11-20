@@ -31,7 +31,7 @@ class App extends React.Component{
           <Switch>
             <Route exact path='/' component={Home} ></Route>
             <Route path='/NewTamoform' render={()=><NewTamoform onTamoCreation={this.handleNewTamo} />} ></Route>
-    <Route path='/TamoControl' render={()=><TamoControl tamolist={this.state.MasterList}/>}></Route>
+            <Route path='/TamoControl' render={()=><TamoControl tamolist={this.state.MasterList}/>}></Route>
           </Switch>
         </div>
       </div>
