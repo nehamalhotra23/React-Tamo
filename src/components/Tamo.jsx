@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import HappyAlien from './HappyAlien';
 import SadAlien from './SadAlien';
 import NormalAlien from './NormalAlien';
-
+import DeadAlien from './DeadAlien';
 
 
 class Tamo extends React.Component{
@@ -14,6 +14,7 @@ class Tamo extends React.Component{
       tired: 10,
       hunger: 10,
       play: 10,
+      button: true
     };
     this.handleIncrementTired=this.handleIncrementTired.bind(this);
     this.handleIncrementHunger=this.handleIncrementHunger.bind(this);
@@ -38,7 +39,9 @@ class Tamo extends React.Component{
 
   }
   componentDidMount(){
-      this.decriment= setInterval(() => this.setDecriments(),5000);
+      this.decriment= setInterval(() => this.setDecriments(),900);
+
+
   }
   setDecriments(){
     var tempTired = this.state.tired;
@@ -56,24 +59,49 @@ class Tamo extends React.Component{
   }
 
   ConditionalforTimer() {
-    if(this.state.hunger > 6 && this.state.tired > 6 && this.state.play > 6) {
-       return  <HappyAlien />
-    }  else if (this.state.hunger > 0 && this.state.tired > 0 && this.state.play > 0) {
-        return <NormalAlien/>
-    } else {
-       return <SadAlien/>
+      if(this.state.hunger > 6 && this.state.tired > 6 && this.state.play > 6) {
+          return  <HappyAlien />
+        }  else if (this.state.hunger > 3 && this.state.tired > 3 && this.state.play > 3) {
+            return <NormalAlien/>
+        } else if (this.state.hunger > 0 && this.state.tired > 0 && this.state.play > 0)  {
+            return <SadAlien/>
+        } else {
+            this.setState({button: false})
+            
+            return 
+        }
     }
-
+    WarningMessage(){
+        var warningMessage = [];
+        if(this.state.hunger<2){
+            warningMessage +=" feed Me";
+        }
+        if(this.state.play<2){
+            warningMessage += " Play With Me";
+        }
+        if(this.state.tired<2){
+            warningMessage += " Give me Energy";
+        }
+        return warningMessage;
+    }
+  ConditionalButton(){
+    if(this.state.button === true){
+       return  <TamoButtons onTiredButtonClick={this.handleIncrementTired} onHungerButtonClick={this.handleIncrementHunger} onPlayButtonClick={this.handleIncrementPlay}/>
+    } else {
+        return "Your alien died!"
+    }
   }
+
   render(){
     return(
       <div>
-        {this.ConditionalforTimer()}
+        {this.state.button ? this.ConditionalforTimer() : <DeadAlien/>}
         <p> Name: {this.props.name}</p>
-        <TamoButtons onTiredButtonClick={this.handleIncrementTired} onHungerButtonClick={this.handleIncrementHunger} onPlayButtonClick={this.handleIncrementPlay}/>
-        <p> Hunger: {this.state.hunger}</p>
+        <p>{this.WarningMessage()}</p>
+        {this.ConditionalButton()}
+        {/* <p> Hunger: {this.state.hunger}</p>
         <p> Tired: {this.state.tired}</p>
-        <p>Play: {this.state.play}</p>
+        <p>Play: {this.state.play}</p> */}
       </div>
 
     );
