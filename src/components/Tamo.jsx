@@ -1,6 +1,11 @@
 import React from 'react';
 import TamoButtons from './TamoButtons';
 import PropTypes from 'prop-types';
+import HappyAlien from './HappyAlien';
+import SadAlien from './SadAlien';
+import NormalAlien from './NormalAlien';
+
+
 
 class Tamo extends React.Component{
   constructor(props){
@@ -36,7 +41,6 @@ class Tamo extends React.Component{
       this.decriment= setInterval(() => this.setDecriments(),5000);
   }
   setDecriments(){
-      console.log("taco");
     var tempTired = this.state.tired;
     tempTired-=1;
     var tempHunger = this.state.hunger;
@@ -46,12 +50,25 @@ class Tamo extends React.Component{
     this.setState({hunger: tempHunger, tired: tempTired, play: tempPlay})
   }
 
-//   componentWillUnMount(){
-//       clearInterval(this.state.)
-//   }
+
+  componentWillUnMount(){
+      clearInterval(this.decriment)
+  }
+
+  ConditionalforTimer() {
+    if(this.state.hunger > 6 && this.state.tired > 6 && this.state.play > 6) {
+       return  <HappyAlien />
+    }  else if (this.state.hunger > 0 && this.state.tired > 0 && this.state.play > 0) {
+        return <NormalAlien/>
+    } else {
+       return <SadAlien/>
+    }
+
+  }
   render(){
     return(
       <div>
+        {this.ConditionalforTimer()}
         <p> Name: {this.props.name}</p>
         <TamoButtons onTiredButtonClick={this.handleIncrementTired} onHungerButtonClick={this.handleIncrementHunger} onPlayButtonClick={this.handleIncrementPlay}/>
         <p> Hunger: {this.state.hunger}</p>
