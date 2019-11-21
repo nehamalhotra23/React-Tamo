@@ -4,18 +4,15 @@ import { v4 } from 'uuid';
   
 function NewTamoform(props) {
   let _name = null;
-  // let _hunger = null;
-  // let _sleep = null;
-  // let _play = null;
-
+  let _tamo = null;
+  
   function handleSubmission(event) {
     event.preventDefault();
-    props.onTamoCreation({name: _name.value, id: v4()});
+    props.onTamoCreation({name: _name.value, tamo: _tamo.value,  id: v4()});
     console.log(_name.value);
+    console.log(_tamo.value);
     _name.value = '';
-    // _hunger.value = '';
-    // _sleep.value = '';
-    // _play.value = '';
+    _tamo.value = ''
   }
   return (
     <div className="container">
@@ -25,7 +22,12 @@ function NewTamoform(props) {
           id='name'
           placeholder='name'
           ref={(input) => {_name = input;}}/>
-        <button type='submit'>create player</button>
+           <select className="form-control" ref={(select) => {_tamo = select}}>
+          <option  selected> Select your Tamo...</option>
+          <option value='monster'  >Monster</option>
+          <option value='alien'>Alien</option>
+        </select><br />
+         <button type='submit'>create player</button>
       </form>
     </div>
   );

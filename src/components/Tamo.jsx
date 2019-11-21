@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import HappyAlien from './HappyAlien';
 import SadAlien from './SadAlien';
 import NormalAlien from './NormalAlien';
+import HappyMonster from './HappyMonster';
+import GrumpyMonster from './GrumpyMonster';
+import SadMonster from './SadMonster';
 import DeadAlien from './DeadAlien';
+import DeadMonster from './DeadMonster';
 
 
 class Tamo extends React.Component{
@@ -59,17 +63,20 @@ class Tamo extends React.Component{
   }
 
   ConditionalforTimer() {
+    console.log(this.props.tamo)
     if(this.state.hunger > 6 && this.state.tired > 6 && this.state.play > 6) {
-      return  <HappyAlien />;
+      return  this.props.tamo =='alien' ? <HappyAlien /> : <HappyMonster />;
     }  else if (this.state.hunger > 3 && this.state.tired > 3 && this.state.play > 3) {
-      return <NormalAlien/>;
+      return this.props.tamo == 'alien' ? <NormalAlien/> : <GrumpyMonster/>;
     } else if (this.state.hunger > 0 && this.state.tired > 0 && this.state.play > 0)  {
-      return <SadAlien/>;
+      return  this.props.tamo =='alien' ? <SadAlien/> : <SadMonster/>;
     } else {
       this.setState({alive: false});
+      console.log(this.state.alive)
       return; 
     }
   }
+
 
   WarningMessage(){
     var warningMessage = [];
@@ -88,7 +95,7 @@ class Tamo extends React.Component{
     if(this.state.alive === true){
       return (<div>
         <TamoButtons onTiredButtonClick={this.handleIncrementTired} onHungerButtonClick={this.handleIncrementHunger} onPlayButtonClick={this.handleIncrementPlay}/>
-      <p>{this.WarningMessage()}</p>;
+      <p>{this.WarningMessage()}</p>
       </div>)
       
     } else {
@@ -100,12 +107,10 @@ class Tamo extends React.Component{
   render(){
     return(
       <div>
-        {this.state.alive  ?  this.ConditionalforTimer() : <DeadAlien/>}
+  {this.state.alive  ?  this.ConditionalforTimer() : (this.props.tamo=='alien' ? <DeadAlien/> : <DeadMonster/>)}
         <p> Name: {this.props.name}</p>
+        <p>tamo: {this.props.tamo}</p>
         {this.ConditionalButton()}
-        {/* <p> Hunger: {this.state.hunger}</p>
-        <p> Tired: {this.state.tired}</p>
-        <p>Play: {this.state.play}</p> */}
       </div>
 
     );
@@ -114,9 +119,7 @@ class Tamo extends React.Component{
 
 Tamo.propTypes = {
   name: PropTypes.string,
-//   hunger: PropTypes.number,
-//   tired: PropTypes.number,
-//   play: PropTypes.number
+  tamo: PropTypes.string
 };
 
 export default Tamo;

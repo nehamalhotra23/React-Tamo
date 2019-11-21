@@ -3,22 +3,21 @@ import Tamo from './Tamo';
 import PropTypes from 'prop-types';
 
 
-function TamoControl(props){
+function MonsterControl(props){
   return (
     <div>
       {props.tamolist.map((tamo) =>
         <Tamo
           name= {tamo.name}
-          tamo={tamo.tamo}
           key={tamo.id}/> 
       )}
     </div>
   );
 }
 
-TamoControl.propTypes={
+MonsterControl.propTypes={
   tamolist: PropTypes.array
 };
 
 
-export default TamoControl;
+export default MonsterControl;
