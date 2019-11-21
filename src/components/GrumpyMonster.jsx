@@ -1,9 +1,13 @@
 import React from 'react';
 import GrumpyM from '../assets/img/grumpymonster.png';
 
-function GrumpyMonster(){
+function GrumpyMonster(){ 
+    var size = {
+        height: '200px',
+        width: '200px'
+      };
     return (
-        <div>
+        <div style={size}>
             <img src={GrumpyM} />
         </div>
     );

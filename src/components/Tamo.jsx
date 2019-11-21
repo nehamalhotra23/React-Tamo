@@ -12,6 +12,7 @@ import DeadMonster from './DeadMonster';
 
 
 class Tamo extends React.Component {
+ 
   constructor(props) {
     super(props);
     this.state = {
@@ -105,8 +106,21 @@ class Tamo extends React.Component {
   }
 
   render() {
+    
+    var content = {
+      padding: "40px",
+      margin: '20px',
+      width: '300px',
+      borderRadius: '12px',
+      border: 'solid 1px rgba(255, 255, 255, 0.2)',
+      webkitBoxShadow:' 4px 5px 5px - 3px #000000',
+      boxShadow: '4px 5px 5px - 3px #000000',
+      overflow: 'hidden',
+      padding: '10px',
+    
+   }
     return (
-      <div>
+      <div className="card"  style={content}>
         {this.state.alive ? this.ConditionalforTimer() : (this.props.tamo == 'alien' ? <DeadAlien /> : <DeadMonster />)}
         <p> Name: {this.props.name}</p>
         <p>tamo: {this.props.tamo}</p>

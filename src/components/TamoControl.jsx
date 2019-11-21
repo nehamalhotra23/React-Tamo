@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 
 
 function TamoControl(props){
+  var flex = {
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
   return (
-    <div>
+    <div style={flex}>
       {props.tamolist.map((tamo) =>
         <Tamo
           name= {tamo.name}
