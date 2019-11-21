@@ -7,8 +7,8 @@ function SadMonster(){
     width: '200px'
   };
   return (
-    <div style={size}>
-      <img src={SadM} />
+    <div >
+      <img src={SadM} style={size}/>
     </div>
   );
 }

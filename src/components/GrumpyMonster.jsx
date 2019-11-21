@@ -7,8 +7,8 @@ function GrumpyMonster(){
     width: '200px'
   };
   return (
-    <div style={size}>
-      <img src={GrumpyM} />
+    <div >
+      <img src={GrumpyM} style={size} />
     </div>
   );
 }

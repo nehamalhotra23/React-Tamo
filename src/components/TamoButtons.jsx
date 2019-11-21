@@ -2,12 +2,15 @@ import React from 'react';
 
 
 function TamoButtons(props){
-  
+  var flexButtonStyle={
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
   return(
-    <div>
-      <button onClick={props.onHungerButtonClick}>Feed Me!</button>
-      <button onClick={props.onTiredButtonClick}>Sleep</button>
-      <button onClick={props.onPlayButtonClick}>Play With Me!</button>
+    <div style={flexButtonStyle}>
+      <button className='btn' onClick={props.onHungerButtonClick}>Feed!</button>
+      <button className='btn' onClick={props.onTiredButtonClick}>Sleep!</button>
+      <button className='btn' onClick={props.onPlayButtonClick}>Play!</button>
     </div>
   );
 }

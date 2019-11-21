@@ -7,8 +7,8 @@ function HappyMonster(){
     width: '200px'
   };
   return (
-    <div style={size}>
-      <img src={HappyM} />
+    <div>
+      <img src={HappyM}  style={size}/>
     </div>
   );
 }
