@@ -9,8 +9,6 @@ function NewTamoform(props) {
   function handleSubmission(event) {
     event.preventDefault();
     props.onTamoCreation({name: _name.value, tamo: _tamo.value,  id: v4()});
-    console.log(_name.value);
-    console.log(_tamo.value);
     _name.value = '';
     _tamo.value = ''
   }

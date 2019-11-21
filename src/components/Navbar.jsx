@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   var navigation = {
-    // paddingTop: '30px',
-    // paddingBottom: '30px',
-    // position: 'fixed',
-    // top: '0',
     width: '100%',
-    // zIndex: '1',
     backgroundColor: 'rgba(0, 0, 0, 0.5)'
   };
   var logo = {

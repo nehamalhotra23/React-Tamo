@@ -11,103 +11,103 @@ import DeadAlien from './DeadAlien';
 import DeadMonster from './DeadMonster';
 
 
-class Tamo extends React.Component{
-  constructor(props){
+class Tamo extends React.Component {
+  constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       tired: 10,
       hunger: 10,
       play: 10,
       alive: true,
     };
-    this.handleIncrementTired=this.handleIncrementTired.bind(this);
-    this.handleIncrementHunger=this.handleIncrementHunger.bind(this);
-    this.handleIncrementPlay=this.handleIncrementPlay.bind(this);
+    this.handleIncrementTired = this.handleIncrementTired.bind(this);
+    this.handleIncrementHunger = this.handleIncrementHunger.bind(this);
+    this.handleIncrementPlay = this.handleIncrementPlay.bind(this);
   }
-  handleIncrementTired(){
+  handleIncrementTired() {
     var temp = this.state.tired;
-    temp+=1;
-    this.setState({tired: temp});
+    temp += 1;
+    this.setState({ tired: temp });
 
   }
-  handleIncrementHunger(){
+  handleIncrementHunger() {
     var temp = this.state.hunger;
-    temp+=1;
-    this.setState({hunger: temp});
+    temp += 1;
+    this.setState({ hunger: temp });
 
   }
-  handleIncrementPlay(){
+  handleIncrementPlay() {
     var temp = this.state.play;
-    temp+=1;
-    this.setState({play: temp});
+    temp += 1;
+    this.setState({ play: temp });
 
   }
-  componentDidMount(){
-    this.decriment= setInterval(() => this.setDecriments(),900);
+  componentDidMount() {
+    this.decriment = setInterval(() => this.setDecriments(), 900);
 
 
   }
-  setDecriments(){
+  setDecriments() {
     var tempTired = this.state.tired;
-    tempTired-=1;
+    tempTired -= 1;
     var tempHunger = this.state.hunger;
-    tempHunger-=1;
+    tempHunger -= 1;
     var tempPlay = this.state.play;
-    tempPlay-=1;
-    this.setState({hunger: tempHunger, tired: tempTired, play: tempPlay});
+    tempPlay -= 1;
+    this.setState({ hunger: tempHunger, tired: tempTired, play: tempPlay });
   }
 
 
-  componentWillUnMount(){
+  componentWillUnMount() {
     clearInterval(this.decriment);
   }
 
   ConditionalforTimer() {
     console.log(this.props.tamo)
-    if(this.state.hunger > 6 && this.state.tired > 6 && this.state.play > 6) {
-      return  this.props.tamo =='alien' ? <HappyAlien /> : <HappyMonster />;
-    }  else if (this.state.hunger > 3 && this.state.tired > 3 && this.state.play > 3) {
-      return this.props.tamo == 'alien' ? <NormalAlien/> : <GrumpyMonster/>;
-    } else if (this.state.hunger > 0 && this.state.tired > 0 && this.state.play > 0)  {
-      return  this.props.tamo =='alien' ? <SadAlien/> : <SadMonster/>;
+    if (this.state.hunger > 6 && this.state.tired > 6 && this.state.play > 6) {
+      return this.props.tamo == 'alien' ? <HappyAlien /> : <HappyMonster />;
+    } else if (this.state.hunger > 3 && this.state.tired > 3 && this.state.play > 3) {
+      return this.props.tamo == 'alien' ? <NormalAlien /> : <GrumpyMonster />;
+    } else if (this.state.hunger > 0 && this.state.tired > 0 && this.state.play > 0) {
+      return this.props.tamo == 'alien' ? <SadAlien /> : <SadMonster />;
     } else {
-      this.setState({alive: false});
+      this.setState({ alive: false });
       console.log(this.state.alive)
-      return; 
+      return;
     }
   }
 
 
-  WarningMessage(){
+  WarningMessage() {
     var warningMessage = [];
-    if(this.state.hunger<2){
-      warningMessage +=' feed Me';
+    if (this.state.hunger < 2) {
+      warningMessage += ' feed Me';
     }
-    if(this.state.play<2){
+    if (this.state.play < 2) {
       warningMessage += ' Play With Me';
     }
-    if(this.state.tired<2){
+    if (this.state.tired < 2) {
       warningMessage += ' Give me Energy';
     }
     return warningMessage;
   }
-  ConditionalButton(){
-    if(this.state.alive === true){
+  ConditionalButton() {
+    if (this.state.alive === true) {
       return (<div>
-        <TamoButtons onTiredButtonClick={this.handleIncrementTired} onHungerButtonClick={this.handleIncrementHunger} onPlayButtonClick={this.handleIncrementPlay}/>
-      <p>{this.WarningMessage()}</p>
+        <TamoButtons onTiredButtonClick={this.handleIncrementTired} onHungerButtonClick={this.handleIncrementHunger} onPlayButtonClick={this.handleIncrementPlay} />
+        <p>{this.WarningMessage()}</p>
       </div>)
-      
+
     } else {
       return 'Your alien died!';
 
     }
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div>
-  {this.state.alive  ?  this.ConditionalforTimer() : (this.props.tamo=='alien' ? <DeadAlien/> : <DeadMonster/>)}
+        {this.state.alive ? this.ConditionalforTimer() : (this.props.tamo == 'alien' ? <DeadAlien /> : <DeadMonster />)}
         <p> Name: {this.props.name}</p>
         <p>tamo: {this.props.tamo}</p>
         {this.ConditionalButton()}
