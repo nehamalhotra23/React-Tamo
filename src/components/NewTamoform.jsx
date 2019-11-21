@@ -10,7 +10,7 @@ function NewTamoform(props) {
     event.preventDefault();
     props.onTamoCreation({name: _name.value, tamo: _tamo.value,  id: v4()});
     _name.value = '';
-    _tamo.value = ''
+    _tamo.value = '';
   }
   return (
     <div className="container">
@@ -20,12 +20,12 @@ function NewTamoform(props) {
           id='name'
           placeholder='name'
           ref={(input) => {_name = input;}}/>
-           <select className="form-control" ref={(select) => {_tamo = select}}>
+        <select className="form-control" ref={(select) => {_tamo = select;}}>
           <option  selected> Select your Tamo...</option>
           <option value='monster'  >Monster</option>
           <option value='alien'>Alien</option>
         </select><br />
-         <button type='submit'>create player</button>
+        <button type='submit'>create player</button>
       </form>
     </div>
   );

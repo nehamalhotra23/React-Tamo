@@ -21,8 +21,8 @@ function Navbar() {
     color: '#fff',
     fontFamily: 'Arial',
     fontWeight: '900',
-    marginLeft: '30vmax',
-    marginRight: 'auto',
+    marginLeft: '40vmax',
+    // marginRight: 'auto',
     '&:hover': {
       textDecoration: 'underline'
     }

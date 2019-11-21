@@ -44,7 +44,7 @@ class Tamo extends React.Component {
 
   }
   componentDidMount() {
-    this.decriment = setInterval(() => this.setDecriments(), 900);
+    this.decriment = setInterval(() => this.setDecriments(), 2000);
 
 
   }
@@ -64,7 +64,7 @@ class Tamo extends React.Component {
   }
 
   ConditionalforTimer() {
-    console.log(this.props.tamo)
+    console.log(this.props.tamo);
     if (this.state.hunger > 6 && this.state.tired > 6 && this.state.play > 6) {
       return this.props.tamo == 'alien' ? <HappyAlien /> : <HappyMonster />;
     } else if (this.state.hunger > 3 && this.state.tired > 3 && this.state.play > 3) {
@@ -73,7 +73,7 @@ class Tamo extends React.Component {
       return this.props.tamo == 'alien' ? <SadAlien /> : <SadMonster />;
     } else {
       this.setState({ alive: false });
-      console.log(this.state.alive)
+      console.log(this.state.alive);
       return;
     }
   }
@@ -97,7 +97,7 @@ class Tamo extends React.Component {
       return (<div>
         <TamoButtons onTiredButtonClick={this.handleIncrementTired} onHungerButtonClick={this.handleIncrementHunger} onPlayButtonClick={this.handleIncrementPlay} />
         <p>{this.WarningMessage()}</p>
-      </div>)
+      </div>);
 
     } else {
       return 'Your alien died!';
@@ -108,7 +108,7 @@ class Tamo extends React.Component {
   render() {
     
     var content = {
-      padding: "40px",
+      padding: '40px',
       margin: '20px',
       width: '300px',
       borderRadius: '12px',
@@ -118,7 +118,7 @@ class Tamo extends React.Component {
       overflow: 'hidden',
       padding: '10px',
     
-   }
+    };
     return (
       <div className="card"  style={content}>
         {this.state.alive ? this.ConditionalforTimer() : (this.props.tamo == 'alien' ? <DeadAlien /> : <DeadMonster />)}
